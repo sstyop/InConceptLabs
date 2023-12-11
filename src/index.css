@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .bg-status-easy {
+    background-color:#42A976;
+  }
+  
+  .bg-status-medium {
+    background-color: #EAC505;
+  }
+  
+  .bg-status-hard {
+    background-color: #EF7D54;
+  }
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color:#eff2f7;
+  min-height: 100vh;
+}
+
+/* Scrollbar custom design */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 4px;
+}
