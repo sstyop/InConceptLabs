@@ -1,3 +1,15 @@
+## Small quiz application that lets you answer to questions that has been fetched from Open Trivia API.
+
+There are two routes
+
+1. / => home
+2. /scorebaord => scoreBoard
+
+In homepage after category select user gets category related 10 questions and trying to answer them.
+After completing the quiz user faces `Thank you` block where shown the score.
+In scoreboard page user can track his/her answers to see how went the quiz.
+There are shown all questions with user choosen answers and correct answers.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
