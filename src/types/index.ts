@@ -1,3 +1,5 @@
+import { Option } from "react-dropdown";
+
 export interface Question {
   type: string,
   difficulty: Difficulty,
@@ -16,4 +18,11 @@ enum Difficulty {
   Easy = "Easy",
   Medium = "Medium",
   Hard = "Hard",
+}
+
+export interface QuizRecord {
+  selectedAnswers: string[];
+  questions: Question[] | null;
+  selectedCategory: Option | undefined;
+  correctAnswers: number;
 }

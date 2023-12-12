@@ -50,6 +50,9 @@ module.exports = {
         'xl': { 'max': '1279px' },
         'lg': { 'max': '1023px' },
         'md': { 'max': '767px' },
+
+        //added min width query to prevent hover behaviour in touch devices
+        'min-lg': { 'min-width': '1024px' },
       }
     },
   },
