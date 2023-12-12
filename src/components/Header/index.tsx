@@ -5,7 +5,7 @@ export const Header: React.FC = () => {
 
   return (
     <header>
-      <Link to={location.pathname === '/' ? "/scoreboard" : "/"} className='text-green text-xl font-bold mt-4 ml-6 inline-block'>{location.pathname === '/' ? 'ScoreBoard' : 'Home'}</Link>
+      <Link to={location.pathname === '/' ? "/scoreboard" : "/"} className='text-green text-xl font-bold mt-4 ml-6 inline-block transition-all min-lg:hover:text-blue'>{location.pathname === '/' ? 'ScoreBoard' : 'Home'}</Link>
     </header>
   );
 };

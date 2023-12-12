@@ -7,6 +7,7 @@ import { QuestionCategory, Question, QuizRecord } from "../../types";
 import Dropdown, { Option } from 'react-dropdown';
 
 export const Home = () => {
+  const [isPageLoaded, setIsPageLoaded] = useState<string>('');
   const [categories, setCategories] = useState<QuestionCategory[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<Option | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -17,6 +18,7 @@ export const Home = () => {
   const [animationName, setAnimationName] = useState<string>("");
 
   useEffect(() => {
+    setTimeout(() => setIsPageLoaded('loaded'), 500);
     const fetchCategories = async () => {
       try {
         const categoriesData = await getAllCategories();
@@ -125,8 +127,8 @@ export const Home = () => {
   }, [])
 
   return (
-    <div className="flex items-center justify-center min-h-[100vh] relative min-lg:mt-20 ">
-      <div className={`flex flex-col items-center absolute top-1/2 -translate-y-1/2  ${!!questions ? "animate-fade-out pointer-events-none" : ""}`}>
+    <div className={`flex items-center justify-center min-h-[100vh] relative min-lg:mt-20 group ${isPageLoaded}`}>
+      <div className={`flex flex-col items-center absolute top-3/4 -translate-y-1/2 transition-all duration-500  ease-out opacity-0 ${!!questions ? "animate-fade-out pointer-events-none" : ""} group-[.loaded]:top-1/2 group-[.loaded]:opacity-100`}>
         <h1 className="text-5xl font-bold	text-green md:text-3xl">Trivia App</h1>
         <h3 className="text-3xl font-bold	text-blue my-20 md:text-xl md:my-8">Pick a Category</h3>
         {storeCategories()}

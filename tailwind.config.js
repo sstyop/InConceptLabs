@@ -12,7 +12,6 @@ module.exports = {
         "dark-green": "#2D6A4C"
       },
       backgroundColor: {
-        'light-gray': '#EFF2F7',
         'milky-white': '#F6F7F8',
         'milky-gray': '#E7EBF1',
         'green': '#3A7859',
@@ -28,7 +27,6 @@ module.exports = {
       },
       colors: {
         'light-green': '#95B6A9',
-        'light-gray': '#E7EBF1',
         'gray': '#C4C4C4',
         'placeholder': '#9EA0A4',
       },

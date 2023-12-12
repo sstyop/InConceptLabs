@@ -5,6 +5,11 @@ import { capitalizeFirstLetter, decodeHTMLEntities } from "../../helpers/utils";
 
 export const ScoreBoard = () => {
   const [usedAnswers, setUserAnswers] = useState<QuizRecord[]>([]);
+  const [isPageLoaded, setIsPageLoaded] = useState<string>('');
+
+  useEffect(() => {
+    setTimeout(() => setIsPageLoaded('loaded'), 500);
+  }, [])
 
   useEffect(() => {
     const storedUserAnswers = localStorage.getItem('Quizzes');
@@ -14,7 +19,7 @@ export const ScoreBoard = () => {
   const storeScoreBoardRows = useCallback(() => {
     return usedAnswers.map((quiz, index) => {
       return (
-        <div key={index} className={`flex flex-col mb-10 border-4 ${((quiz.correctAnswers * 100) / AMOUNT_OF_QUESTIONS) > 50 ? 'border-teal-700' : 'border-rose-400'}`}>
+        <div key={index} className={`flex flex-col mb-10 border-4 transition-all duration-500  ease-out translate-y-1/3 opacity-0 group-[.loaded]:translate-y-0 group-[.loaded]:opacity-100 ${((quiz.correctAnswers * 100) / AMOUNT_OF_QUESTIONS) > 50 ? 'border-teal-700' : 'border-rose-400'}`} style={{ transitionDelay: `${(index + 1) * 100}ms` }}>
           <div className="flex p-3 md:flex-col">
             <p className="mr-6 text-blue font-bold"><span className="text-dark-green font-normal">Category:</span> {quiz.selectedCategory?.label}</p>
             <p className="mr-6 text-blue font-bold md:my-2"><span className="text-dark-green font-normal">Score:</span> {quiz.correctAnswers}/{AMOUNT_OF_QUESTIONS}</p>
@@ -43,7 +48,7 @@ export const ScoreBoard = () => {
 
 
   return (
-    <div className="p-6 flex flex-col">
+    <div className={`p-6 flex flex-col transition-all group ${isPageLoaded}`}>
       <h1 className="text-3xl mb-10 text-blue">Your ScoreBoard</h1>
       {storeScoreBoardRows()}
     </div>

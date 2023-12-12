@@ -2,7 +2,6 @@ import axios from "axios";
 import { ROOT_URL } from "../helpers/constants";
 import { Question, QuestionCategory } from "../types";
 
-
 export async function getAllCategories(): Promise<QuestionCategory[]> {
   try {
     const response = await axios.get(`${ROOT_URL}/api_category.php`);
