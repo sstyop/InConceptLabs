@@ -13,7 +13,7 @@ export const ScoreBoard = () => {
 
   useEffect(() => {
     const storedUserAnswers = localStorage.getItem('Quizzes');
-    if (storedUserAnswers) setUserAnswers(JSON.parse(storedUserAnswers));
+    if (storedUserAnswers) setUserAnswers(JSON.parse(storedUserAnswers).reverse());
   }, []);
 
   const storeScoreBoardRows = useCallback(() => {
@@ -46,11 +46,10 @@ export const ScoreBoard = () => {
     })
   }, [usedAnswers])
 
-
   return (
     <div className={`p-6 flex flex-col transition-all group ${isPageLoaded}`}>
-      <h1 className="text-3xl mb-10 text-blue">Your ScoreBoard</h1>
-      {storeScoreBoardRows()}
+      {usedAnswers.length > 0 && <h1 className="text-3xl mb-10 text-blue">Your ScoreBoard</h1>}
+      {usedAnswers.length > 0 ? storeScoreBoardRows() : <span className="text-dark-green">You haven't finished any quiz yet.</span>}
     </div>
   )
 }
